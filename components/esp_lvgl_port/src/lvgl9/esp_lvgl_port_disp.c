@@ -263,8 +263,8 @@ static lv_display_t *lvgl_port_add_disp_priv(const lvgl_port_display_cfg_t *disp
     }
 
     if (disp_cfg->flags.buff_dma) {
-        /* DMA buffer can be used only in RGB565 color format */
-        ESP_RETURN_ON_FALSE(display_color_format == LV_COLOR_FORMAT_RGB565, NULL, TAG, "DMA buffer can be used only in display color format RGB565 (not aligned copy)!");
+        /* DMA buffer can be used only in RGB565 or RGB888 color format */
+        ESP_RETURN_ON_FALSE(display_color_format == LV_COLOR_FORMAT_RGB565 || display_color_format == LV_COLOR_FORMAT_RGB888, NULL, TAG, "DMA buffer can be used only in display color format RGB565 (not aligned copy)!");
     }
 
     /* Display context */
